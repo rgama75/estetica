@@ -3,19 +3,21 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
 import { useOrg } from '../../contexts/OrgContext'
 
-const NAV_ITEMS = [
-  { to: '/', label: 'Dashboard', end: true },
-  { to: '/agenda', label: 'Agenda' },
-  { to: '/crm', label: 'CRM' },
-  { to: '/pacientes', label: 'Pacientes' },
-  { to: '/avaliacoes', label: 'Avaliações' },
-  { to: '/propostas', label: 'Propostas' },
-  { to: '/vendas', label: 'Vendas' },
-  { to: '/pacotes', label: 'Pacotes' },
-  { to: '/assinaturas', label: 'Assinaturas' },
-  { to: '/financeiro', label: 'Financeiro' },
-  { to: '/automacoes', label: 'Automações' },
-  { to: '/relatorios', label: 'Relatórios' },
+const NAV_ITEMS = [{ to: '/', label: 'Dashboard', end: true }]
+
+// Módulos ainda indisponíveis: aparecem recolhidos, sem link
+const SOON_ITEMS = [
+  'Agenda',
+  'Pacientes',
+  'Avaliações clínicas',
+  'CRM',
+  'Propostas',
+  'Vendas',
+  'Pacotes',
+  'Assinaturas',
+  'Financeiro',
+  'Automações',
+  'Relatórios',
 ]
 
 const SETTINGS_ITEMS = [
@@ -65,6 +67,18 @@ export function AppShell({ children }: { children: ReactNode }) {
               <SidebarLink key={item.to} {...item} />
             ))}
           </ul>
+          <details className="mt-4">
+            <summary className="cursor-pointer rounded-md px-3 py-1.5 text-sm font-medium text-ink-muted hover:text-ink">
+              Em breve
+            </summary>
+            <ul className="mt-1 space-y-0.5">
+              {SOON_ITEMS.map((label) => (
+                <li key={label} aria-disabled="true" className="px-3 py-1.5 text-sm text-ink-muted">
+                  {label}
+                </li>
+              ))}
+            </ul>
+          </details>
           <div className="mt-5 mb-1.5 px-3 text-xs font-medium text-ink-muted">Organização</div>
           <ul className="space-y-0.5">
             {SETTINGS_ITEMS.map((item) => (

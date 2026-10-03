@@ -7,23 +7,32 @@
   --color-canvas: #FAF9F6;
   --color-surface: #FFFFFF;
   --color-ink: #1B2624;
-  --color-ink-muted: #5C6B68;
-  --color-border: #E1DED4;
-  --color-border-strong: #C9C4B5;
+  --color-ink-muted: #556462;
+  --color-border: #D9D5C8;
+  /* borda de campos: 3,6:1 sobre branco (WCAG 1.4.11) */
+  --color-border-strong: #7D8985;
 
-  --color-primary: #2F6F62;
-  --color-primary-hover: #275C51;
+  --color-primary: #2A6A5D;
+  --color-primary-hover: #235A4F;
   --color-primary-soft: #E7EFEC;
 
+  /* dourado: só detalhe de marca; para texto use accent-text */
   --color-accent: #B8823A;
-  --color-accent-soft: #F3E8D6;
+  --color-accent-text: #7A4F12;
+  --color-accent-soft: #F6EAD3;
 
-  --color-success: #3D7A5C;
-  --color-success-soft: #E5F0E9;
-  --color-danger: #B0463C;
-  --color-danger-soft: #F7E7E4;
-  --color-warning: #B8823A;
-  --color-warning-soft: #F3E8D6;
+  --color-success: #2E6B4F;
+  --color-success-soft: #E3F0E8;
+  --color-warning: #8A5A00;
+  --color-warning-soft: #FBEFD0;
+  --color-danger: #A63A31;
+  --color-danger-soft: #F9E6E3;
+  --color-info: #2B5D8A;
+  --color-info-soft: #E3ECF4;
+  --color-neutral: #4A5654;
+  --color-neutral-soft: #ECEAE3;
+
+  --color-focus-ring: #1F5FBF;
 }
 
 html, body, #root {
@@ -44,4 +53,10 @@ body {
 
 * {
   border-color: var(--color-border);
+}
+
+/* Foco visível em todo elemento interativo */
+:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
 }

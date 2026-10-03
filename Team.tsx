@@ -11,6 +11,7 @@ export default function TeamPage() {
   const [members, setMembers] = useState<MemberRow[]>([])
   const [roles, setRoles] = useState<Role[]>([])
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
   const canAdminister = hasPermission('users.administer')
 
@@ -42,9 +43,10 @@ export default function TeamPage() {
   async function handleRoleChange(member: MemberRow, roleId: string) {
     const { error } = await supabase.from('organization_members').update({ role_id: roleId }).eq('id', member.id)
     if (error) {
-      alert('Não foi possível alterar o papel: ' + error.message)
+      setError('Não foi possível alterar o papel. Tente novamente.')
       return
     }
+    setError(null)
     await loadMembers()
   }
 
@@ -55,11 +57,16 @@ export default function TeamPage() {
 
       <Card className="mt-6 bg-primary-soft border-primary/20">
         <p className="text-sm text-ink">
-          Convites por e-mail para novos usuários exigem uma função de backend (Edge Function) — a chave necessária
-          para criar contas nunca pode ficar no navegador. Essa função está planejada para a próxima fase. Por
-          enquanto, esta tela já gerencia papéis e permissões dos membros existentes com aplicação real no banco de dados.
+          Convites por e-mail chegam em breve. Por enquanto, peça para a pessoa criar a própria conta e
+          o administrador libera o acesso. Aqui você já altera o papel de quem faz parte da equipe.
         </p>
       </Card>
+
+      {error && (
+        <p role="alert" className="mt-4 rounded-md border border-danger/30 bg-danger-soft px-4 py-3 text-sm text-danger">
+          {error}
+        </p>
+      )}
 
       <div className="mt-6">
         {loading ? (

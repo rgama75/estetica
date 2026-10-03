@@ -4,8 +4,8 @@ export default function ComingSoon({ moduleName, phase }: { moduleName: string; 
   return (
     <div className="p-8">
       <EmptyState
-        title={`${moduleName} chega na ${phase}`}
-        description="Este módulo ainda não foi construído. A fundação (organizações, unidades, usuários e permissões) já está pronta para suportá-lo."
+        title={`${moduleName} em breve`}
+        description="Estamos preparando este módulo. Enquanto isso, você já pode configurar sua clínica, unidades e equipe."
       />
     </div>
   )

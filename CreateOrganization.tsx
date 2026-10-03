@@ -61,7 +61,7 @@ export default function CreateOrganization() {
               id="specialty"
               value={specialty}
               onChange={(e) => setSpecialty(e.target.value as Specialty)}
-              className="w-full rounded-md border border-border-strong bg-surface px-3 py-2 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
+              className="w-full rounded-md border border-border-strong bg-surface px-3 py-2 text-sm text-ink focus-visible:border-focus-ring focus-visible:outline-focus-ring focus-visible:outline-offset-1"
             >
               {SPECIALTIES.map((s) => (
                 <option key={s.value} value={s.value}>

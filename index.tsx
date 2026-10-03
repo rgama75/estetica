@@ -6,7 +6,7 @@ export function Button({
   ...props
 }: ButtonHTMLAttributes<HTMLButtonElement> & { variant?: 'primary' | 'secondary' | 'ghost' | 'danger' }) {
   const base =
-    'inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-medium transition-colors disabled:opacity-50 disabled:pointer-events-none'
+    'inline-flex items-center justify-center gap-2 min-h-11 rounded-md px-4 py-2 text-sm font-medium transition-colors disabled:opacity-50 disabled:pointer-events-none'
   const variants: Record<string, string> = {
     primary: 'bg-primary text-white hover:bg-primary-hover',
     secondary: 'bg-surface border border-border-strong text-ink hover:bg-canvas',
@@ -19,7 +19,7 @@ export function Button({
 export function Input({ className = '', ...props }: InputHTMLAttributes<HTMLInputElement>) {
   return (
     <input
-      className={`w-full rounded-md border border-border-strong bg-surface px-3 py-2 text-sm text-ink placeholder:text-ink-muted focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary ${className}`}
+      className={`w-full rounded-md border border-border-strong bg-surface px-3 py-2 text-sm text-ink placeholder:text-ink-muted focus-visible:border-focus-ring focus-visible:outline-focus-ring focus-visible:outline-offset-1 ${className}`}
       {...props}
     />
   )
@@ -39,12 +39,14 @@ export function Card({ children, className = '' }: { children: ReactNode; classN
   )
 }
 
-export function Badge({ children, tone = 'default' }: { children: ReactNode; tone?: 'default' | 'success' | 'warning' | 'danger' }) {
+export function Badge({ children, tone = 'default' }: { children: ReactNode; tone?: 'default' | 'success' | 'warning' | 'danger' | 'info' | 'neutral' }) {
   const tones: Record<string, string> = {
-    default: 'bg-canvas text-ink-muted border-border-strong',
+    default: 'bg-neutral-soft text-neutral border-neutral/20',
     success: 'bg-success-soft text-success border-success/20',
     warning: 'bg-warning-soft text-warning border-warning/20',
     danger: 'bg-danger-soft text-danger border-danger/20',
+    info: 'bg-info-soft text-info border-info/20',
+    neutral: 'bg-neutral-soft text-neutral border-neutral/20',
   }
   return (
     <span className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium ${tones[tone]}`}>

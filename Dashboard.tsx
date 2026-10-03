@@ -54,13 +54,14 @@ export default function Dashboard() {
 
   return (
     <div className="p-8">
-      <h1 className="font-display text-2xl text-ink">Olá, {currentMember?.role?.name === 'Proprietário' ? 'bem-vindo(a)' : 'bem-vindo(a) de volta'}</h1>
+      <h1 className="font-display text-2xl text-ink">Olá</h1>
       <p className="mt-1 text-sm text-ink-muted">{currentOrganization?.name}</p>
 
       {pending.length > 0 && (
         <Card className="mt-6">
           <h2 className="font-display text-lg text-ink">Configuração inicial</h2>
-          <p className="mt-1 text-sm text-ink-muted">Complete estes passos para aproveitar o ClinicFlow AI.</p>
+          <p className="mt-1 text-sm font-medium text-ink">{checklist.length - pending.length} de {checklist.length} passos concluídos</p>
+          <p className="mt-1 text-sm text-ink-muted">Conclua estes passos para começar a usar o ClinicFlow AI.</p>
           <ul className="mt-4 space-y-2">
             {checklist.map((item) => (
               <li key={item.label}>
@@ -76,7 +77,7 @@ export default function Dashboard() {
                     >
                       {item.done ? '✓' : ''}
                     </span>
-                    <span className={item.done ? 'text-ink-muted line-through' : 'text-ink'}>{item.label}</span>
+                    <span className={item.done ? 'text-ink-muted' : 'text-ink'}>{item.label}</span>
                   </span>
                   {item.detail && <span className="text-xs text-ink-muted">{item.detail}</span>}
                 </Link>
@@ -106,8 +107,7 @@ export default function Dashboard() {
       </div>
 
       <p className="mt-8 text-sm text-ink-muted">
-        Indicadores comerciais e financeiros (faturamento, conversão, no-show, etc.) chegam nas próximas fases,
-        junto com Agenda, CRM e Financeiro.
+        Em breve, aqui você acompanha agenda do dia, confirmações, faltas e faturamento.
       </p>
     </div>
   )
